@@ -1,0 +1,315 @@
+:root {
+  --primary: #2e8b57;
+  --secondary: #3cb371;
+  --accent: #20b2aa;
+  --accent-light: #98fb98;
+  --background: #f5f5dc;
+  --text: #2f4f4f;
+  --text-light: #556b2f;
+  --card-bg: #ffffff;
+  --card-border: #d8bfd8;
+  --wood-texture: linear-gradient(90deg, #d2b48c 0%, #deb887 50%, #d2b48c 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.7;
+  color: var(--text);
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.App {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.clock {
+  font-size: 1.8rem;
+  margin: 1.5rem 0;
+  color: var(--primary);
+  font-weight: 400;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.search-bar {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.search-bar input {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid var(--card-border);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+  transition: all 0.3s ease;
+  align-self: center;
+  font-family: 'Georgia', serif;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.2);
+}
+
+.search-bar button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 180px;
+  align-self: center;
+  font-family: 'Georgia', serif;
+}
+
+.search-bar button:hover {
+  background-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.widget-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--card-border);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.widget-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--wood-texture);
+}
+
+.weather-widget {
+  position: relative;
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.weather-header h3 {
+  color: var(--primary);
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-family: 'Georgia', serif;
+}
+
+.weather-icon {
+  font-size: 3.5rem;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.weather-temp {
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+  color: var(--primary);
+  font-family: 'Georgia', serif;
+}
+
+.weather-conditions {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: var(--text-light);
+  font-weight: 400;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--card-border);
+}
+
+.weather-details span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+  font-family: 'Georgia', serif;
+}
+
+.weather-details span strong {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.news-feed {
+  position: relative;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.news-header h3 {
+  color: var(--primary);
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-family: 'Georgia', serif;
+}
+
+.news-feed ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.news-feed li {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+  text-align: left;
+}
+
+.news-feed li:last-child {
+  border-bottom: none;
+}
+
+.news-feed a {
+  color: var(--primary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  font-family: 'Georgia', serif;
+}
+
+.news-feed a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+}
+
+.news-description {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-family: 'Georgia', serif;
+}
+
+@media (min-width: 768px) {
+  .search-bar {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-bar input {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  .search-bar button {
+    width: auto;
+    margin-left: 0.5rem;
+  }
+
+  .widgets {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .widget-card {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .weather-details {
+    justify-content: space-between;
+  }
+}
+
+/* Loading states */
+.loading {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.error {
+  color: #b22222;
+  font-weight: 500;
+}
+
+/* Nature-inspired decorative elements */
+.leaf-decoration {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.leaf-decoration::before {
+  content: '🍃';
+  font-size: 2rem;
+  color: var(--accent-light);
+  opacity: 0.3;
+}
