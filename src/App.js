@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { WiDaySunny, WiCloud, WiRain, WiSnow, WiThunderstorm, WiFog } from 'react-icons/wi';
+import { WiDaySunny, WiCloud, WiRain, WiSnow, WiThunderstorm, WiFog, WiMoonrise, WiSunrise } from 'react-icons/wi';
 import './App.css';
 
 function Clock() {
@@ -165,10 +165,58 @@ function NewsFeed() {
   );
 }
 
+function ThemeToggle() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check for saved theme preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+      // Use saved preference if exists
+      if (savedTheme === 'dark') {
+        setDarkMode(true);
+        document.documentElement.classList.add('dark-mode');
+      }
+    } else if (prefersDark) {
+      // Use system preference if no saved preference
+      setDarkMode(true);
+      document.documentElement.classList.add('dark-mode');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    if (newMode) {
+      document.documentElement.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  return (
+    <button onClick={toggleTheme} className="theme-toggle">
+      <span className="theme-toggle-icon">
+        {darkMode ? <WiSunrise size={24} /> : <WiMoonrise size={24} />}
+      </span>
+      <span className="theme-toggle-text">
+        {darkMode ? 'Light Mode' : 'Dark Mode'}
+      </span>
+    </button>
+  );
+}
+
 function App() {
   return (
     <div className="App">
-      <Clock />
+      <div className="header-controls">
+        <Clock />
+        <ThemeToggle />
+      </div>
       <div className="container">
         <SearchBar />
         <div className="widgets">
