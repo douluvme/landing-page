@@ -84,12 +84,12 @@ function WeatherWidget() {
   };
 
   if (loading) return <div>Loading weather...</div>;
-  if (error) return <div>{error}</div>;
 
   return (
     <div className="weather-widget widget-card">
       <div className="weather-header">
         <h3>Weather in {weather.location}</h3>
+        {error && <div className="weather-error">{error}</div>}
       </div>
       <div className="weather-icon">{getWeatherIcon(weather.conditions)}</div>
       <div className="weather-temp">{weather.temperature}°C</div>
@@ -191,12 +191,12 @@ function NewsFeed() {
   }, []);
 
   if (loading) return <div>Loading news...</div>;
-  if (error) return <div>{error}</div>;
 
   return (
     <div className="news-feed widget-card">
       <div className="news-header">
         <h3>Technology News</h3>
+        {error && <div className="news-error">{error}</div>}
       </div>
       <ul>
         {news.map((article, index) => (
