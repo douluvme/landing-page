@@ -58,7 +58,7 @@ function WeatherWidget() {
         };
         setWeather(mockWeather);
         setLoading(false);
-        setError('Weather API unavailable - showing sample data');
+        setError('Displaying sample weather data');
       }
     };
 
@@ -143,33 +143,47 @@ function NewsFeed() {
       } catch (err) {
         console.error('News API error:', err);
         
-        // Fallback to mock data if API fails
+        // Fallback to enhanced mock data if API fails
         const mockNews = [
           {
-            title: "React 19 Released with New Features",
-            source: { name: "React Blog" },
+            title: "React 19 Released with Groundbreaking Features",
+            source: { name: "React Official Blog" },
             publishedAt: new Date().toISOString(),
-            description: "The latest version of React brings performance improvements and new hooks.",
+            description: "React 19 introduces concurrent rendering, automatic batching, and new server components that will change how we build web applications.",
             url: "https://reactjs.org"
           },
           {
-            title: "New AI Breakthroughs in 2024",
-            source: { name: "Tech News" },
-            publishedAt: new Date().toISOString(),
-            description: "Researchers announce major advancements in artificial intelligence.",
-            url: "https://technews.com"
+            title: "AI Revolution: How Machine Learning is Changing Web Development",
+            source: { name: "TechCrunch" },
+            publishedAt: new Date(Date.now() - 86400000).toISOString(),
+            description: "New AI tools are automating front-end development tasks, from layout generation to code optimization, reducing development time by up to 40%.",
+            url: "https://techcrunch.com"
           },
           {
-            title: "Web Development Trends",
-            source: { name: "Dev Magazine" },
-            publishedAt: new Date().toISOString(),
-            description: "Exploring the latest trends in web development for 2024.",
-            url: "https://devmagazine.com"
+            title: "The Future of CSS: New Features in 2024",
+            source: { name: "CSS-Tricks" },
+            publishedAt: new Date(Date.now() - 172800000).toISOString(),
+            description: "CSS nesting, container queries, and new color functions are making responsive design easier than ever before.",
+            url: "https://css-tricks.com"
+          },
+          {
+            title: "JavaScript Performance Optimization Techniques",
+            source: { name: "Dev.to" },
+            publishedAt: new Date(Date.now() - 259200000).toISOString(),
+            description: "How to make your JavaScript code run faster than ever with modern optimization techniques and WebAssembly integration.",
+            url: "https://dev.to"
+          },
+          {
+            title: "WebAssembly: The Future of Web Performance",
+            source: { name: "Smashing Magazine" },
+            publishedAt: new Date(Date.now() - 345600000).toISOString(),
+            description: "How WASM is enabling near-native performance in browsers, allowing complex applications to run at unprecedented speeds.",
+            url: "https://smashingmagazine.com"
           }
         ];
         setNews(mockNews);
         setLoading(false);
-        setError('News API unavailable - showing sample data');
+        setError('Displaying sample technology news');
       }
     };
 
