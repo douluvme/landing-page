@@ -318,19 +318,6 @@ body {
   font-family: 'Georgia', serif;
 }
 
-.weather-error, .news-error {
-  font-size: 0.8rem;
-  color: var(--text-light);
-  margin-top: 0.3rem;
-  font-style: italic;
-  font-family: 'Georgia', serif;
-}
-
-.dark-mode .weather-error,
-.dark-mode .news-error {
-  color: rgba(232, 232, 232, 0.8);
-}
-
 .weather-icon {
   font-size: 3.5rem;
   margin: 1rem 0;
