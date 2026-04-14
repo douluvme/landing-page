@@ -25,7 +25,6 @@ function Clock() {
 function WeatherWidget() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -58,7 +57,6 @@ function WeatherWidget() {
         };
         setWeather(mockWeather);
         setLoading(false);
-        setError('Displaying sample weather data');
       }
     };
 
@@ -127,7 +125,6 @@ function SearchBar() {
 function NewsFeed() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -182,7 +179,6 @@ function NewsFeed() {
         ];
         setNews(mockNews);
         setLoading(false);
-        setError('Displaying sample technology news');
       }
     };
 
