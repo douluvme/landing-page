@@ -30,8 +30,8 @@ function WeatherWidget() {
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        // Using WeatherAPI.com
-        const API_KEY = 'b8c8ebacc8f0490bbac161654261304';
+        // Using WeatherAPI.com - in production, use environment variables
+        const API_KEY = process.env.REACT_APP_WEATHER_API_KEY || 'b8c8ebacc8f0490bbac161654261304';
         const response = await axios.get(
           `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=Seoul&aqi=no`
         );
@@ -45,9 +45,20 @@ function WeatherWidget() {
         });
         setLoading(false);
       } catch (err) {
-        setError('Failed to fetch weather data');
-        setLoading(false);
         console.error('Weather API error:', err);
+        
+        // Fallback to mock data if API fails
+        const mockWeather = {
+          temperature: 22,
+          conditions: "Sunny",
+          location: "Seoul",
+          humidity: 65,
+          windSpeed: 12,
+          icon: "//cdn.weatherapi.com/weather/64x64/day/113.png"
+        };
+        setWeather(mockWeather);
+        setLoading(false);
+        setError('Weather API unavailable - showing sample data');
       }
     };
 
@@ -122,17 +133,43 @@ function NewsFeed() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        // Using NewsAPI
-        const API_KEY = '4408e35fef8f4231af4113f016f1786d';
+        // Using NewsAPI - in production, use environment variables
+        const API_KEY = process.env.REACT_APP_NEWS_API_KEY || '4408e35fef8f4231af4113f016f1786d';
         const response = await axios.get(
           `https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=${API_KEY}`
         );
         setNews(response.data.articles.slice(0, 5));
         setLoading(false);
       } catch (err) {
-        setError('Failed to fetch news');
-        setLoading(false);
         console.error('News API error:', err);
+        
+        // Fallback to mock data if API fails
+        const mockNews = [
+          {
+            title: "React 19 Released with New Features",
+            source: { name: "React Blog" },
+            publishedAt: new Date().toISOString(),
+            description: "The latest version of React brings performance improvements and new hooks.",
+            url: "https://reactjs.org"
+          },
+          {
+            title: "New AI Breakthroughs in 2024",
+            source: { name: "Tech News" },
+            publishedAt: new Date().toISOString(),
+            description: "Researchers announce major advancements in artificial intelligence.",
+            url: "https://technews.com"
+          },
+          {
+            title: "Web Development Trends",
+            source: { name: "Dev Magazine" },
+            publishedAt: new Date().toISOString(),
+            description: "Exploring the latest trends in web development for 2024.",
+            url: "https://devmagazine.com"
+          }
+        ];
+        setNews(mockNews);
+        setLoading(false);
+        setError('News API unavailable - showing sample data');
       }
     };
 
